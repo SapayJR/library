@@ -53,7 +53,6 @@
                                                 <th>Category</th>
                                                 <th>Price</th>
                                                 <th>Author</th>
-                                                <th>Status</th>
                                                 <th>Publish Date</th>
                                             </tr>
                                             @foreach($books as $book)
@@ -71,10 +70,7 @@
                                                     {{$book->author}}
                                                 </td>
                                                 <td>
-                                                    {{$book->type}}
-                                                </td>
-                                                <td>
-                                                    {{$book->publish_date}}
+                                                    {{ $book->publish_date ?? 'Not published' }}
                                                 </td>
                                             </tr>
                                             @endforeach

@@ -8,22 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
-
-    public function category()
-    {
-        return $this->belongsTo('App\Models\Category', 'id');
-    }
-    public function Author()
-    {
-        return $this->belongsTo('App\Models\User', 'name');
-    }
 
     const TYPES = [
         'Published',
         'Not published'
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function Author()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

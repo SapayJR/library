@@ -11,6 +11,6 @@ class Category extends Model
     protected $guarded = [];
 
     public function books(){
-        return $this->hasMany(Book::class, 'catid', 'id')->whereActive(1);
+        return $this->hasMany(Book::class);
     }
 }

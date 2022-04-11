@@ -40,14 +40,14 @@
                         </div>
                     </div>
 
-                    <div>
-                        <label>Publish</label>
-                        <select name="type" class="form-control selectric">
-                            @foreach(\App\Models\Book::TYPES as $type)
-                                <option value="{{ $type }}">{{ $type }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+{{--                    <div>--}}
+{{--                        <label>Publish</label>--}}
+{{--                        <select name="type" class="form-control selectric">--}}
+{{--                            @foreach(\App\Models\Book::TYPES as $type)--}}
+{{--                                <option value="{{ $type }}">{{ $type }}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
 
                     <div class="form-group">
                         <label>Publish Date</label>
