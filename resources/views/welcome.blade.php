@@ -1,4 +1,4 @@
-@extends('layouts.front_layout')
+@extends('home.layouts.front_layout')
 
 @section('content')
     <!-- Home -->
@@ -98,16 +98,16 @@
                 <div class="col">
 
                     <div class="product_grid">
-
-
+                        @foreach($books as $book)
                             <div class="product">
                                 <div class="product_image"><img src="images/leather-book-preview.png" alt=""></div>
                                 <div class="product_content">
-                                    <div class="product_title"><a href=""></a></div>
-                                    <div class="product_price"> сум</div>
+                                    <div class="product_title"><a href="{{ route('showBook', $book->id) }}">{{$book->title}}</a></div>
+                                    <div class="product_title"><a href="">{{$book->user_id}}</a></div>
+                                    <div class="product_price">{{$book->price}} сум</div>
                                 </div>
                             </div>
-
+                        @endforeach
                     </div>
 
                 </div>

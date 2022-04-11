@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="logo"><a href="">Library</a></div>
+                            <div class="logo"><a href="{{route('welcome')}}">Library</a></div>
                             <nav class="main_nav">
                                 <ul>
                                     <li>
@@ -41,9 +41,9 @@
                                     <li class="hassubs">
                                         <a href="#">Категории</a>
                                         <ul>
-
-                                                <li><a href=""></a></li>
-
+                                            @foreach($categories as $category)
+                                                <li><a href="{{ route('showCategory',$category->alias ) }}">{{ $category->title }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="contact.html">Контакты</a></li>
@@ -51,7 +51,7 @@
                                         <li class="hassubs">
                                             <a href="#">{{ auth()->user()->name }}</a>
                                             <ul>
-                                                <li><a href="{{ '/dashboard' }}">Profile</a></li>
+                                                <li><a href="{{ '/home' }}">Profile</a></li>
                                                 <li><a href="{{ route('logout') }}"
                                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a>
@@ -132,41 +132,6 @@
             </div>
         </div>
 
-        <!-- Social -->
-        {{-- <div class="header_social">
-             <ul class="hassubs">
-                 <!-- Authentication Links -->
-                 @guest
-                     @if (Route::has('login'))
-                         <li>
-                             <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                         </li>
-                     @endif
-
-                     @if (Route::has('register'))
-                         <li>
-                             <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                         </li>
-                     @endif
-                 @else
-                     <li>
-                         <a href="#" role="button">
-                             {{ Auth::user()->name }}
-                         </a>
-                     </li>
-
-                     <li> <a  href="{{ route('logout') }}"
-                              onclick="event.preventDefault();
-                                                      document.getElementById('logout-form').submit();">
-                             {{ __('Logout') }}
-                         </a>
-
-                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                             @csrf
-                         </form></li>
-                 @endguest
-             </ul>
-         </div>--}}
     </header>
 
 

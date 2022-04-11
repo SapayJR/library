@@ -61,13 +61,13 @@
                                                     {{$book->title}}
                                                 </td>
                                                 <td>
-                                                    {{$book->catid}}
+                                                    {{$book->category_id}}
                                                 </td>
                                                 <td>
                                                     {{$book->price}}
                                                 </td>
                                                 <td>
-                                                    {{$book->author}}
+                                                    {{$book->user_id}}
                                                 </td>
                                                 <td>
                                                     {{ $book->publish_date ?? 'Not published' }}

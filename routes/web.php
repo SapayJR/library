@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,17 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-
-
+Route::get('/', [HomeController::class, 'index'])->name('welcome');
+Route::get('/books/{id}', [\App\Http\Controllers\BookController::class, 'showBook'])->name('showBook');
+Route::get('/category/{cat}', [\App\Http\Controllers\BookController::class, 'showCategory'])->name('showCategory');
 
 Auth::routes();
 Route::middleware(['role:admin'])->group(function () {
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'dashboard'])->name('home');
     Route::resource('book', BookController::class);
     Route::resource('category', CategoryController::class);
 
