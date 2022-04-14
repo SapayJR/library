@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('created_at', 'desc')->get();
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.show_profile.blade.php', compact('categories'));
     }
 
     /**
@@ -38,7 +38,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::create($request->all());
-        return redirect()->route('category.index');
+        return redirect()->route('category.show_profile.blade.php');
     }
 
     /**
@@ -84,6 +84,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect('admin.categories.index');
+        return redirect('admin.categories.show_profile.blade.php');
     }
 }

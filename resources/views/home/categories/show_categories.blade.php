@@ -65,7 +65,7 @@
                                 <div class="product_image"><img src="/images/leather-book-preview.png" alt="{{ $book->title }}"></div>
                                 {{--                        <div class="product_extra product_sale"><a href="categories.html">Hot</a></div>--}}
                                 <div class="product_content">
-                                    <div class="product_title"><a href="{{ route('showBook', $book->id) }}">{{ $book->title }}</a></div>
+                                    <div class="product_title"><a href="{{ route('showBook', $book->alias) }}">{{ $book->title }}</a></div>
                                     <div class="product_price">{{ $book->price }} сум</div>
                                 </div>
                             </div>

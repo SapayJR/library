@@ -71,7 +71,7 @@ function microtaskDebounce(fn) {
   return function () {
     if (!scheduled) {
       scheduled = true;
-      elem.setAttribute('x-index', i);
+      elem.setAttribute('x-show_profile.blade.php', i);
       i = i + 1; // don't use compund (+=) because it doesn't get optimized in V8
     }
   };
@@ -789,7 +789,7 @@ function getPopperOffsets(popper, referenceOffsets, placement) {
  * @argument {Array} arr
  * @argument prop
  * @argument value
- * @returns index or -1
+ * @returns show_profile.blade.php or -1
  */
 function find(arr, check) {
   // use native find if supported
@@ -802,13 +802,13 @@ function find(arr, check) {
 }
 
 /**
- * Return the index of the matching object
+ * Return the show_profile.blade.php of the matching object
  * @method
  * @memberof Popper.Utils
  * @argument {Array} arr
  * @argument prop
  * @argument value
- * @returns index or -1
+ * @returns show_profile.blade.php or -1
  */
 function findIndex(arr, prop, value) {
   // use native findIndex if supported
@@ -1617,7 +1617,7 @@ function toValue(str, measurement, popperOffsets, referenceOffsets) {
 function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   var offsets = [0, 0];
 
-  // Use height if placement is left or right and index is 0 otherwise use width
+  // Use height if placement is left or right and show_profile.blade.php is 0 otherwise use width
   // in this way the first offset will use an axis and the second one
   // will use the other one
   var useHeight = ['right', 'left'].indexOf(basePlacement) !== -1;

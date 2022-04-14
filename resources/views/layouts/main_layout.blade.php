@@ -119,6 +119,6 @@
 <script src="{{ asset('/assets/js/custom.js') }}"></script>
 
 <!-- Page Specific JS File -->
-<script src="{{ asset('/assets/js/page/index.js') }}"></script>
+<script src="{{ asset('/assets/js/page/show_profile.blade.php.js') }}"></script>
 </body>
 </html>

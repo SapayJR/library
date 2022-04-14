@@ -848,11 +848,11 @@
 		if (!this.settings.freeDrag) {
 			// check closest item
 			$.each(coordinates, $.proxy(function(index, value) {
-				// on a left pull, check on current index
+				// on a left pull, check on current show_profile.blade.php
 				if (direction === 'left' && coordinate > value - pull && coordinate < value + pull) {
 					position = index;
-				// on a right pull, check on previous index
-				// to do so, subtract width from value and set position = index + 1
+				// on a right pull, check on previous show_profile.blade.php
+				// to do so, subtract width from value and set position = show_profile.blade.php + 1
 				} else if (direction === 'right' && coordinate > value - width - pull && coordinate < value - width + pull) {
 					position = index + 1;
 				} else if (this.op(coordinate, '<', value)
@@ -3091,7 +3091,7 @@
 		this._core = carousel;
 
 		/**
-		 * Hash index for the items.
+		 * Hash show_profile.blade.php for the items.
 		 * @protected
 		 * @type {Object}
 		 */
