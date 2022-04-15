@@ -23,7 +23,15 @@ class BookController extends Controller
 
 
         return view('home.categories.show_categories', compact('cat','books'));
-
     }
+
+    public function changeStatus ($id,$status)
+    {
+        $status = $status == 'approved' ? 'created' : 'approved';
+        Book::findOrFail($id)->update(['status' => $status]);
+        return redirect()->route('book.index');
+    }
+
+
 
 }

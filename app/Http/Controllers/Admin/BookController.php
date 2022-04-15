@@ -19,7 +19,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::orderBy('created_at','DESC')->get();
-        return view('admin.books.show_profile.blade.php', compact('books'));
+        return view('admin.books.index', compact('books'));
     }
 
     /**
@@ -44,7 +44,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         Book::create($request->all());
-        return redirect()->route('book.show_profile.blade.php');
+        return redirect()->route('book.index');
     }
 
     /**
@@ -74,11 +74,12 @@ class BookController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $book->update($request->all());
+        return redirect()->route('book.index');
     }
 
     /**

@@ -1,4 +1,9 @@
-@extends('admin.layouts.admin_layout')
+@extends('home.layouts.profile_layout')
+
+@section('custom_css')
+    <link rel="stylesheet" type="text/css" href="/front/styles/categories.css">
+    <link rel="stylesheet" type="text/css" href="/front/styles/categories_responsive.css">
+@endsection
 
 
 @section('content')
@@ -6,7 +11,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4>Add Book</h4>
+                <h4>{{ auth()->user()->name }}</h4>
             </div>
 
             @if (session('success'))
@@ -16,7 +21,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('book.store') }}" method="POST">
+            <form action="{{ route('profile.store') }}" method="POST">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
@@ -24,14 +29,6 @@
                         <input type="text" name="title" class="form-control" required>
                     </div>
 
-                    <div class="form-group">
-                        <label>Author</label>
-                        <select name="user_id" class="form-control" required>
-                            @foreach($authors as $author)
-                                <option value="{{ $author['name'] }}">  {{ $author['name'] }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <label>Description</label>
@@ -40,20 +37,11 @@
                         </div>
                     </div>
 
-{{--                    <div>--}}
-{{--                        <label>Publish</label>--}}
-{{--                        <select name="type" class="form-control selectric">--}}
-{{--                            @foreach(\App\Models\Book::TYPES as $type)--}}
-{{--                                <option value="{{ $type }}">{{ $type }}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-
                     <div class="form-group">
                         <label>Publish Date</label>
                         <div class="input-group">
-                        <input type="date" class="form-control datemask col-md-3" name="publish_date"
-                               placeholder="YYYY/MM/DD">
+                            <input type="date" class="form-control datemask col-md-3" name="publish_date"
+                                   placeholder="YYYY/MM/DD">
                         </div>
                     </div>
 
@@ -64,6 +52,13 @@
                             @foreach($categories as $category)
                                 <option value="{{ $category['id'] }}">  {{ $category['title'] }}</option>
                             @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Author</label>
+                        <select name="user_id" class="form-control" required>
+                                <option value="{{auth()->user()->id }}">  {{ auth()->user()->name }}</option>
                         </select>
                     </div>
 

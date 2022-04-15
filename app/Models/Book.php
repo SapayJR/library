@@ -10,6 +10,10 @@ class Book extends Model
     use HasFactory;
     protected $guarded = [];
 
+    const STATUS = [
+      'Created',
+      'Approved'
+    ];
     const TYPES = [
         'Published',
         'Not published'

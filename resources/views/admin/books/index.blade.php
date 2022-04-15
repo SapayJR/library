@@ -54,6 +54,8 @@
                                                 <th>Price</th>
                                                 <th>Author</th>
                                                 <th>Publish Date</th>
+                                                <th>Status</th>
+                                                <th>Change Status</th>
                                             </tr>
                                             @foreach($books as $book)
                                             <tr>
@@ -72,6 +74,27 @@
                                                 <td>
                                                     {{ $book->publish_date ?? 'Not published' }}
                                                 </td>
+                                                <td>
+                                                    {{$book->status}}
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-success" href="{{ route('changeStatus', [$book->id, $book->status] ) }}">{{ $book->status }}</a>
+                                                </td>
+{{--                                                <td>--}}
+{{--                                                    <form action="{{ route('book.update', $book->id) }}" method="POST">--}}
+{{--                                                        @csrf--}}
+{{--                                                        @method('PUT')--}}
+{{--                                                    <select name="status" class="form-control selectric">--}}
+{{--                                                        @foreach(\App\Models\Book::STATUS as $status)--}}
+{{--                                                            <option value="{{ $status }}">{{ $status }}</option>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    </select>--}}
+{{--                                                        <div class="col-sm-12 col-md-7">--}}
+{{--                                                            <button class="btn btn-primary">Save</button>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </form>--}}
+{{--                                                </td>--}}
                                             </tr>
                                             @endforeach
                                         </table>

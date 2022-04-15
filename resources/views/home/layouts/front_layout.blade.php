@@ -51,7 +51,7 @@
                                         <li class="hassubs">
                                             <a href="#">{{ auth()->user()->name }}</a>
                                             <ul>
-                                                <li><a href="{{ '/home' }}">Profile</a></li>
+                                                <li><a href="{{ route('profile.index') }}">Profile</a></li>
                                                 <li><a href="{{ route('logout') }}"
                                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a>

@@ -57,21 +57,11 @@
         <div class="main-sidebar">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="{{ route('home') }}">Library</a>
+                    <a href="">Library</a>
                 </div>
                 <div class="sidebar-brand sidebar-brand-sm">
                     <a href="#">St</a>
                 </div>
-                <ul class="sidebar-menu">
-                    <li class="menu-header">Dashboard</li>
-                    <li class="nav-item dropdown active">
-                        <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="{{route('book.index')}}">Books</a></li>
-                            <li class="active"><a class="nav-link" href="{{route('category.index')}}">Categories</a></li>
-                        </ul>
-                    </li>
-                </ul>
 
             </aside>
         </div>
@@ -114,6 +104,6 @@
 <script src="{{ asset('/assets/js/custom.js') }}"></script>
 
 <!-- Page Specific JS File -->
-<script src="{{ asset('/assets/js/page/index.js') }}"></script>
+<script src="{{ asset('/assets/js/page/show_profile.blade.php.js') }}"></script>
 </body>
 </html>
