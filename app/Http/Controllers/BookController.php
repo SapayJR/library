@@ -17,15 +17,14 @@ class BookController extends Controller
 
     public function showCategory($cat_alias)
     {
-        $cat = Category::where('alias', $cat_alias)->first();
-
-        $books = Book::where('category_id', $cat->id)->get();
-
+        $books = Book::whereHas('category', function ($q) use($cat_alias) {
+            $q->where('alias', $cat_alias);
+        })->get();
 
         return view('home.categories.show_categories', compact('cat','books'));
     }
 
-    public function changeStatus ($id,$status)
+    public function changeStatus($id,$status)
     {
         $status = $status == 'approved' ? 'created' : 'approved';
         Book::findOrFail($id)->update(['status' => $status]);

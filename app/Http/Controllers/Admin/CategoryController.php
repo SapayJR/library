@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Repository\Interfaces\CategoryRepoInterface;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,9 +14,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Contracts\View\View|
      */
-    public function index()
+    public function index(CategoryRepoInterface  $categoryRepository)
     {
-        $categories = Category::orderBy('created_at', 'desc')->get();
+       $categories = $categoryRepository->getCategoriesList();
+        
         return view('admin.categories.index', compact('categories'));
     }
 
