@@ -25,7 +25,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('created_at', 'DESC')->get();
+        $categories = Category::orderByDesc('created_at')->get();
         return view('home.profile.add_book', compact('categories'));
     }
 
