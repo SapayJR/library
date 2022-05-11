@@ -6,11 +6,32 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\User;
+use App\Repositories\Admin\BookRepository;
+use App\Repositories\Admin\CategoryRepository;
+use App\Repositories\Admin\UserRepository;
+use App\Services\Admin\BookService;
 use Illuminate\Http\Request;
 use function view;
 
 class BookController extends Controller
 {
+    /**
+     * @var BookRepository
+     */
+    public $bookRepository, $categoryRepository, $userRepository, $bookService;
+    /**
+     * @var BookService
+     */
+
+
+    public function __construct(BookRepository $bookRepository, CategoryRepository $categoryRepository, UserRepository $userRepository, BookService $bookService)
+    {
+        $this->bookRepository = $bookRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->userRepository = $userRepository;
+        $this->bookService = $bookService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +39,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::orderBy('created_at','DESC')->get();
+        $books = $this->bookRepository->getBooks();
         return view('admin.books.index', compact('books'));
     }
 
@@ -29,8 +50,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        $authors = User::orderBy('created_at', 'DESC')->get();
-        $categories = Category::orderBy('created_at', 'DESC')->get();
+        $authors = $this->userRepository->getUsers();
+        $categories = $this->categoryRepository->getCategories();
 
         return view('admin.books.create',compact('authors','categories'));
     }

@@ -21,7 +21,8 @@ class BookFactory extends Factory
             'price' => $this->faker->randomNumber(),
             'user_id' => User::all()->random()->first(),
             'description' => $this->faker->text(22),
-            'publish_date' => $this->faker->date()
+            'publish_date' => $this->faker->date(),
+            'alias' => $this->faker->name()
         ];
     }
 }

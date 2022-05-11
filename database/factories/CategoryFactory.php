@@ -16,6 +16,7 @@ class CategoryFactory extends Factory
         return [
             'title' => $this->faker->city(),
             'description' => $this->faker->text(22),
+            'alias' => $this->faker->name()
         ];
     }
 }
