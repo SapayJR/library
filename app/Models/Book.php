@@ -10,6 +10,18 @@ class Book extends Model
     use HasFactory;
     protected $guarded = [];
 
+    protected $fillable = [
+
+        'title',
+        'category_id',
+        'price',
+        'user_id',
+        'description',
+        'publish_date',
+        'alias',
+
+    ];
+
     const STATUS = [
       'Created',
       'Approved'

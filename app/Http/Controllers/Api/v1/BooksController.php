@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BookStoreRequest;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
@@ -23,11 +24,13 @@ class BooksController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return BookResource
      */
     public function store(Request $request)
     {
-        //
+        $created_book = Book::create($request->all());
+
+        return new BookResource($created_book);
     }
 
     /**
@@ -46,11 +49,12 @@ class BooksController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return BookResource
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $book->update($request->all());
+        return new BookResource($book);
     }
 
     /**
@@ -61,6 +65,6 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }
